@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hello-web-cluster
+  labels:
+    app: hello
+spec:
+  selector:
+    matchLabels:
+      app: hello
+      tier: cluster
+  template:
+    metadata:
+      labels:
+        app: hello
+        tier: cluster
+    spec:
+      containers:
+        - name: hello-web
+          image: us-docker.pkg.dev/google-samples/containers/gke/hello-app:1.0
+          ports:
+            - containerPort: 6443
+          resources:
+            requests:
+              cpu: 200m
