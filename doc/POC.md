@@ -7,7 +7,7 @@
 * [k3d](https://k3d.io/v5.6.0/)
 * [Docker](https://docs.docker.com/get-docker/)
 * [kubectl](https://kubernetes.io/ru/docs/tasks/tools/install-kubectl/)
-* Запущений кластер kubernetes(як запускати можна дізнатись [тут](Concept.md))
+* Кластер kubernetes(як запускати можна дізнатись [тут](Concept.md))
 
 -----------------
 
