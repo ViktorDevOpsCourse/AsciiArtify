@@ -21,9 +21,9 @@
 5. Ввесли логін і пароль на сторінці авторизації.
 Логін - ```admin```, для отримання пароля виконайте команду ```kubectl get secret argocd-initial-admin-secret -n argocd -o jsonpath="{.data.password}" | base64 -d```
 <p>
-  <img src="./assetc/screen1.png" alt="Опис">
+  <img src="./assets/screen1.png" alt="Опис">
 </p>
 6. Ваш argo cd готовий до роботи
 <p>
-  <img src="./assetc/screen2.png" alt="Опис">
+  <img src="./assets/screen2.png" alt="Опис">
 </p>
