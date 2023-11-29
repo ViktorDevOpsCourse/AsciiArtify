@@ -1,0 +1,39 @@
+#!/bin/bash
+
+# Define command-line arguments
+
+SCRIPT_NAME=$0
+KUBE_RESOURCE=$1
+NAMESPACE=$2
+
+
+function usage() {
+  echo "Usage to show top details: $SCRIPT_NAME [resource namespace]"
+}
+### Hot new error handling!
+# We expect one argument.  Otherwise tell the user how to
+# call your script.
+if [[ "$#" -ne 2 ]]; then
+  usage
+  exit 1
+fi
+
+if [[ "$1" == -h ]]; then
+  usage
+  exit 0
+fi
+
+echo "Resource, Namespace, Name, CPU, Memory"
+# Retrieve resource usage statistics from Kubernetes
+kubectl top $KUBE_RESOURCE -n $NAMESPACE | tail -n +2 | while read line
+do
+  # Extract CPU and memory usage from the output
+  NAME=$(echo $line | awk '{print $1}')
+  CPU=$(echo $line | awk '{print $2}')
+  MEMORY=$(echo $line | awk '{print $3}')
+
+  echo $KUBE_RESOURCE, $NAMESPACE, $NAME, $CPU, $MEMORY
+
+  # Output the statistics to the console
+  # "Resource, Namespace, Name, CPU, Memory"
+done
